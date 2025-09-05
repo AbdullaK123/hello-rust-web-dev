@@ -1,6 +1,9 @@
+
 use diesel::prelude::*;
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use crate::schema::*;
+
 
 #[derive(
     Insertable, 
@@ -12,10 +15,12 @@ use crate::schema::*;
 )]
 #[diesel(table_name = products)]
 pub struct NewProduct {
+    pub id: Option<Uuid>,
     pub name: String,
     pub cost: f64,
     pub active: bool,
 }
+
 
 #[derive(AsChangeset, Debug, Clone, Serialize, Deserialize)]
 #[diesel(table_name = products)]
@@ -24,6 +29,7 @@ pub struct ProductUpdates {
     pub cost: Option<f64>,
     pub active: Option<bool>
 }
+
 
 #[derive(
     Identifiable, 
@@ -37,7 +43,7 @@ pub struct ProductUpdates {
 #[diesel(table_name = products)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Product {
-    pub id: i32,
+    pub id: Uuid,
     pub name: String,
     pub cost: f64,
     pub active: bool,

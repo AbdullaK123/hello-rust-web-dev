@@ -2,16 +2,16 @@
 
 diesel::table! {
     product_variants (id) {
-        id -> Int4,
-        product_id -> Int4,
-        variant_id -> Int4,
+        id -> Uuid,
+        product_id -> Uuid,
+        variant_id -> Uuid,
         value -> Nullable<Varchar>,
     }
 }
 
 diesel::table! {
     products (id) {
-        id -> Int4,
+        id -> Uuid,
         name -> Varchar,
         cost -> Float8,
         active -> Bool,
@@ -20,7 +20,7 @@ diesel::table! {
 
 diesel::table! {
     variants (id) {
-        id -> Int4,
+        id -> Uuid,
         name -> Varchar,
     }
 }

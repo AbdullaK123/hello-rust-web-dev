@@ -1,6 +1,7 @@
 use diesel::{Insertable, Queryable, Identifiable};
 use diesel::prelude::*;
 use serde::{Serialize, Deserialize};
+use uuid::Uuid;
 use crate::schema::*;
 
 #[derive(
@@ -39,7 +40,7 @@ pub struct VariantUpdate {
 #[diesel(table_name = variants)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Variant {
-    pub id: i32,
+    pub id: Uuid,
     pub name: String
 }
 
@@ -52,8 +53,8 @@ pub struct Variant {
 )]
 #[diesel(table_name = product_variants)]
 pub struct NewProductVariant {
-    pub variant_id: i32,
-    pub product_id: i32,
+    pub variant_id: Uuid,
+    pub product_id: Uuid,
     pub value: String
 }
 
@@ -66,8 +67,8 @@ pub struct NewProductVariant {
 )]
 #[diesel(table_name = product_variants)]
 pub struct ProductVariantUpdates {
-    pub variant_id: Option<i32>,
-    pub product_id: Option<i32>,
+    pub variant_id: Option<Uuid>,
+    pub product_id: Option<Uuid>,
     pub value: Option<String>
 }
 
@@ -83,8 +84,8 @@ pub struct ProductVariantUpdates {
 #[diesel(table_name = product_variants)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct ProductVariant {
-    pub id: i32,
-    pub variant_id: i32,
-    pub product_id: i32,
+    pub id: Uuid,
+    pub variant_id: Uuid,
+    pub product_id: Uuid,
     pub value: Option<String>
 }
