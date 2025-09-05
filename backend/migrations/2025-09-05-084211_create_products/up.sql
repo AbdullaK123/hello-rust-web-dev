@@ -1,0 +1,7 @@
+-- Your SQL goes here
+CREATE TABLE products (
+  id INT PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  cost FLOAT NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT FALSE
+);
