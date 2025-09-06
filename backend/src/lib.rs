@@ -6,4 +6,3 @@ pub mod models;
 pub mod controllers;
 pub mod prelude;
 pub mod traits;
-pub mod middleware;
